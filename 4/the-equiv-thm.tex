@@ -1,0 +1,29 @@
+\subsection{How do we come up with the proof}
+In contrast to the polished proof, which isn't so intuitive, I investigated
+into a rough way of how that can be arrived at.
+
+Let us start with 
+\begin{align*}
+M \otoc^1 N_1 \subset N \\
+N \otoc^2 M_1 \subset M
+\end{align*}
+
+Although both have a subset as one end, we can try to use one of them for the
+subset and the other for the rest. That is, let $A_0 := M-M_1$, and set up
+
+\paragraph{Rule 1}
+For any $m \in M$,
+\begin{enumerate}
+	\item If $m \in M_1 = M-A_0$, then it corresponds to the $n$ that $n
+		\otoc^2 m$.
+	\item Otherwise ($m \in A_0$), it corresponds to the $n$ that $m \otoc^1
+		n$.
+\end{enumerate}
+
+Now we ask, does Rule 1 establish a one-to-one correspondence? Unfortunately,
+it does not. Let $m \in A_0$. It has a $n$ by case (2), i.e.\ $m \otoc^1 n$;
+but for any $n$, we have anothre $m' \in M$ by $\otoc^2$. This $m'$ must be in
+$M_1$ and thus $m \ne m'$. According to  Rule 1, $m$ correspond to $n$ by case
+(2), while $m'$ correspond to $n$ by case (1). This shows that this rule does
+not produce a 1-to-1.
+
