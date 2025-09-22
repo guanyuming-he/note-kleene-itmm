@@ -2,10 +2,16 @@
 In contrast to the polished proof, which isn't so intuitive, I investigated
 into a rough way of how that can be arrived at.
 
+% one-to-one correspondence.
+% make \sim a mathop so that with \limits its superscript goes above
+% corro and corrt stands for correspondence one/two, respectively.
+\def\corro{\mathop{\sim}\limits^1}
+\def\corrt{\mathop{\sim}\limits^2}
+
 Let us start with 
 \begin{align*}
-M \otoc^1 N_1 \subset N \\
-N \otoc^2 M_1 \subset M
+M \corro N_1 \subset N \\
+N \corrt M_1 \subset M
 \end{align*}
 
 Although both have a subset as one end, we can try to use one of them for the
@@ -14,16 +20,59 @@ subset and the other for the rest. That is, let $A_0 := M-M_1$, and set up
 \paragraph{Rule 1}
 For any $m \in M$,
 \begin{enumerate}
-	\item If $m \in M_1 = M-A_0$, then it corresponds to the $n$ that $n
-		\otoc^2 m$.
-	\item Otherwise ($m \in A_0$), it corresponds to the $n$ that $m \otoc^1
-		n$.
+	\item If $m \in M_1 = M-A_0$, then it corresponds to the $n$ such that $n
+		\corrt m$.
+	\item Otherwise ($m \in A_0$), it corresponds to the $n$ such that $m
+		\corro n$.
 \end{enumerate}
 
 Now we ask, does Rule 1 establish a one-to-one correspondence? Unfortunately,
-it does not. Let $m \in A_0$. It has a $n$ by case (2), i.e.\ $m \otoc^1 n$;
-but for any $n$, we have anothre $m' \in M$ by $\otoc^2$. This $m'$ must be in
-$M_1$ and thus $m \ne m'$. According to  Rule 1, $m$ correspond to $n$ by case
-(2), while $m'$ correspond to $n$ by case (1). This shows that this rule does
+it does not. Let $m \in A_0$. It has a $n$ by case~2, i.e.\ $m \corro n$;
+but for any $n$, we have anothre $m' \in M$ by $\corrt$. This $m'$ must be in
+$M_1$ and thus $m \ne m'$. According to  Rule 1, $m$ correspond to $n$ by
+case~2 , while $m'$ correspond to $n$ by case~1. This shows that this rule does
 not produce a 1-to-1.
+
+To fight against this obstacle, consider if we can remove some influence of
+case~1 ($\corrt$) so that it doesn't fill that entirety of $N$. 
+
+Which ones of $M_1$ to remove? How about we remove all possible such $m'$s
+mentioned earlier? Such $m'$s are produced by mapping $A_0$ to $N_1$ by $\corro$
+and back to $M_1$ by $\corrt$.  Call it $A_1$. By definition, $A_1$ is
+disjoint with $A_0$. Define the image of mapping $A_0$ to $N_1$ by $\corro$ as
+$B_0$.
+
+The updated case~1 and case~2 are:
+\paragraph{Rule 2}
+For any $m \in M$,
+\begin{enumerate}
+	\item If $m \in M-A_0-A_1$, then it corresponds to the $n$ such that $n
+		\corrt m$.
+	\item Otherwise ($m \in A_0+A_1$), it corresponds to the $n$ such that $m \corro
+		n$.
+\end{enumerate}
+
+Does this eliminate the problem?  Let $m_0$ in $A_0+A_1$. We have $m_0 \corro
+n_0 \corrt m_1$.  If $m_0$ is in $A_0$, then by definition, $m_1$ is in $A_1$.
+For this $m_1$ we can't say too much, because it doesn't fall under case~1. But
+what if $m_0$ is in $A_1$, or what if we continue digging from $m_1$?
+
+We have $m_0 \corro n_0 \corrt m_1 \corro n_1 \corrt m_2$. 
+\begin{enumerate}
+\item Because $M_1$ is disjoint with $A_0$, This $m_2 \in M_1$ doesn't belong
+	to $A_0$.
+\item $m_1$ is in $A_1$, disjoint from $A_0$, the set of $m_0$s. Because
+	$\corro$ is 1-to-1, it follows that the set of all $n_1$ must be disjoint
+	from that of all $n_0$, $B_0$. Call the former $B_1$. Because $\corrt$ is
+	one-to-one, the set of $m_2$'s, $A_2$ must be disjoint from that of
+	$m_1$'s, $A_1$.  
+\end{enumerate}
+
+Thus, these $m_2$'s belong to neither $A_0$ nor $A_1$.  Because $m_1$ $\corro$
+$n_1$, $m_1$ and $n_1$ are matched under the new rule by case~2. Because $n_1$
+$\corrt$ $m_2$, they are also matched under the new rule by case~1. Again, this
+new rule is still not a 1-to-1.
+
+Continuing with this infinitely, and we will have the situation discussed in
+the book.
 
