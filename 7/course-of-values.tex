@@ -1,0 +1,19 @@
+\subsection{Course-of-values induction}
+The course-of-values induction may be rephrased as follows:
+\begin{thm}[Course-of-values induction]
+Let $P(n)$ be a property about natural number $n$. Let $Q(m)$ be a property
+about natural number $m$ such that it holds iff $P(n)$ holds for all $n \le m$.
+
+If $P(0)$ and $P(m+1)$ follows from $Q(m)$, then $P(n)$ is true for all $n$. 
+\end{thm}
+\begin{proof}
+The proof is quite simple.
+
+First, prove $Q(0)$ (which is the same is $P(0)$), and then see the
+obvious fact that $P(m+1)$ with $Q(m)$ deduces $Q(m+1)$. Then, we apply the
+induction principle on $Q$, to conclude $Q(m)$ for all $m$. Clearly, $Q(m)$
+implies $P(m)$, and we are done.
+\end{proof}
+
+It may also be rephrased more simply, where $Q(m)$ holds whenever $P(n)$ holds
+for all $n < m$. Then, $Q(0)$ is vacuously true, and the rest is the same.

@@ -1,0 +1,71 @@
+\subsection{Pairing of parentheses}
+\begin{lem} \label{lem.pairing.1}
+A proper pairing of $2n$ parentheses contains (at least) an innermost pair. More
+precisely, if we have a proper pairing for $2n$ parentheses, then there exists
+an inner pair in this pairing.
+\end{lem}
+\begin{proof}
+Let $P(n)$ denote the lemma. Let $Q(m)$ denotes that $P(n)$ holds for all $n
+\le m$. To apply course-of-values induction, we prove first $P(0)$ and then
+$Q(m) \to Q(m+1)$.
+
+$P(0)$ is vacuously true.
+
+Suppose inductively $Q(m)$ holds. Let's consider a pair of $2(m+1)$
+parentheses. If it can admit a proper pairing at all, then the leftmost
+parenthesis must be a left one to not violate the rule: ``a left parenthesis is
+always paired with ... to the right of it.'' Although the same reasoning
+applies to deduce that the rightmost must be a right parenthesis, it needs not
+to match the leftmost one. 
+
+In any case, the leftmost one much be matched by some parathesis to the right
+of it. If they are immediate next to each other, then we have found such an
+innermost pair. Otherwise, some other paratheses are inside. Because a proper
+pairing is admitted by the whole, those inside must also satisfy the rule of
+proper pairing and admit a smaller one themselves. Moreover, they are of $\le
+2m$ parentheses. Thus, appkying the inductive hypothesis, we know they have an
+innermost pair, as desired.
+\end{proof}
+
+\begin{lem}
+A set of $2n$ parentheses admits at most one proper pairing. In other words,
+two proper pairings of $2n$ parentheses must be the same.
+\end{lem}
+\begin{proof}
+Induct on $n$. When $n=0$, it's vacuously true.
+
+Let $p_1$ and $p_2$ be two proper pairings on $2n$ parentheses. By
+Lemma~\ref{lem.pairing.1}, we must see an innermost pair $i_1$ for $p_1$ and
+$i_2$ for $p_2$. 
+
+There are two cases: If we can choose $i_1$ and $i_2$ to be the same, then we
+choose so, and exclude it from both $p_1$ and $p_2$. Then,
+the whole with $i_1$ or $i_2$ removed must be the same, which can only admit at
+most one proper pairing, by the inductive hypothesis. The only possible proper
+pairing of the whole is the outer plus the innermost as a pair, for we cannot
+make a proper pairing if any one of the innermost pair is assigned to one of
+the outer. Thus, $p_1$ and $p_2$ are the same.
+
+If we cannot choose $i_1$ and $i_2$ to be the same, then $i_1$ is not assigned
+as a pair in $p_2$ and vice versa. However, such an assignment cannot be part
+of a proper pairing, as then either $i_1$ or $i_2$ will be part of separated
+pairs.
+
+We can now close the induction.
+\end{proof}
+
+\begin{lem}
+If $2n$ parentheses and a consecutive subset of $2m$ of them both admit a
+proper pairing, then they must agree with each other. 
+\end{lem}
+\begin{proof}
+We induct on $m$. When $m=0$, it's vacuously true.
+
+Inductively suppose that it's already true for $m$. Consider a subset of $2m+2$
+parentheses. By Lemma~\ref{lem.pairing.1}, we can remove the innermost pair of
+it. Moreover, in both the $2m$'s and the $2n$'s proper pairing, the inner pair
+must pair itself. And now we have the $2m$'s as a subset, which by the
+inductive hypothesis agrees with the $2n$'s. 
+
+Adding the removed innermost pair back, we can now close the induction.
+\end{proof}
